@@ -1,13 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const db = require('./../db');
+const ObjectId = require('mongodb').ObjectId;
+
+/*
+router.get('/departments', (req, res) => {
+  res.json(db.departments);
+});
+*/
+router.get('/departments', (req, res) => {
+  req.db.collection('departments').find().toArray((err, data) => {
+    if(err) res.status(500).json({ message: err });
+    else res.json(data);
+  });
+});
 
 router.get('/departments', (req, res) => {
   res.json(db.departments);
 });
-
+/*
 router.get('/departments/random', (req, res) => {
   res.json(db.departments[Math.floor(Math.random() * db.length)]);
+});
+*/
+router.get('/departments/:id', (req, res) => {
+  // ObjectId konwertuje dane (req.params.id) do typu ObjectId wymaga importu na początku
+  req.db.collection('departments').findOne({ _id: ObjectId(req.params.id) }, (err, data) => {
+    if(err) res.status(500).json({ message: err });
+    else if(!data) res.status(404).json({ message: 'Not found' });
+    else res.json(data);
+  });
 });
 
 router.get('/departments/:id', (req, res) => {
