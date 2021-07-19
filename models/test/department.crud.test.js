@@ -86,11 +86,11 @@ describe('Department', () => {
       const updatedDepartment = await Department.findOne({ name: '=Department #1=' });
       expect(updatedDepartment).to.not.be.null;
     });
-    
+
     it('should properly update multiple documents with "updateMany" method', async () => {
       await Department.updateMany({}, { $set: { name: 'Updated!' }});
       const departments = await Department.find({ name: 'Updated!' });
-      expect(departments.length).to.be.equal(2); // skąd wię że updejtujemy 2?
+      expect(departments.length).to.be.equal(2); 
     });
   
   });
@@ -130,4 +130,3 @@ describe('Department', () => {
   
   });
 });
-
