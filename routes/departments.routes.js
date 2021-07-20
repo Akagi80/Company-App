@@ -5,8 +5,8 @@ const DepartmentController = require('../controllers/departments.controller');
 router.get('/departments', DepartmentController.getAll);
 router.get('/departments/random', DepartmentController.getRandom);
 router.get('/departments/:id', DepartmentController.getById);
-router.get('/departments', DepartmentController.addNew);
-router.get('/departments/:id', DepartmentController.putById);
-router.get('/departments/:id', DepartmentController.deleteById);
+router.post('/departments', DepartmentController.addNew);
+router.put('/departments/:id', DepartmentController.putById);
+router.delete('/departments/:id', DepartmentController.deleteById);
 
 module.exports = router;

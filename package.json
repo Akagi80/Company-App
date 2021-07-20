@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "set NODE_ENV=production && mocha \"./{,!(node_modules)/**/}*.test.js\"",
-    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn run test"
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "dependencies": {
     "chai": "4.2.0",

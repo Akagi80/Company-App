@@ -8,9 +8,9 @@ describe('Department', () => {
   before(async () => {
     try {
       const fakeDB = new MongoMemoryServer(); //tworzymy nową testową bazę danych      
-      const uri = await fakeDB.getConnectionString(); // pobieramy adres bazy testowej
+      const uri = await fakeDB.getUri(); // pobieramy adres bazy testowej
       
-      mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });  
+      await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });  
     } catch(err) {
       console.log(err);
     }      
